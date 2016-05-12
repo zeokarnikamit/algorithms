@@ -8,6 +8,7 @@
     Psuedo Code: http://en.wikipedia.org/wiki/Binary_search
 
 """
+from algorithms.sorting.quick_sort import sort as quick_sort
 
 
 def search(seq, key):
@@ -30,6 +31,21 @@ def search(seq, key):
             lo = mid + 1
         elif seq[mid] > key:
             hi = mid - 1
+        else:
+            return mid
+    return False
+
+
+def binary_search(array, value):
+    array = quick_sort(array)
+    low = 0
+    high = len(array) - 1
+    while high >= low:
+        mid = (high - low) / 2
+        if array[mid] > value:
+            high = mid - 1
+        elif array[mid] < value:
+            low = mid + 1
         else:
             return mid
     return False
